@@ -498,9 +498,10 @@ func GetItem(stub shim.ChaincodeStubInterface, function string, args []string) (
 	fmt.Println("GetItem() : Response : Successfull ")
 
 	// Masking ItemImage binary data
-	itemObj, _ := JSONtoAR(Avalbytes)
-	itemObj.ItemImage = []byte{}
-	Avalbytes, _ = ARtoJSON(itemObj)
+//	itemObj, _ := JSONtoAR(Avalbytes)
+//	itemObj.ItemImage = []byte{}
+//	Avalbytes, _ = ARtoJSON(itemObj)
+
 
 	return Avalbytes, nil
 }
@@ -1072,8 +1073,13 @@ func PostItemLog(stub shim.ChaincodeStubInterface, item ItemObject, status strin
 		if err != nil {
 			fmt.Println("PostItemLog() : write error while inserting record\n")
 			return buff, err
-		}
-	}
+
+
+		} else {
+fmt.Println("PostItemLog():this is my log\n")
+}
+	
+}
 	return buff, nil
 }
 
@@ -1152,7 +1158,7 @@ func PostAuctionRequest(stub shim.ChaincodeStubInterface, function string, args 
 		}
 
 	}
-
+fmt.PrintLln("PostAuctionRequest():postAuctionComplete\n")
 	return buff, err
 }
 
