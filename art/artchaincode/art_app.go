@@ -789,10 +789,11 @@ func CreateItemObject(args []string) (ItemObject, error) {
 
 	var err error
 	var myItem ItemObject
-
+fmt.Println("len of item argument:%d",len(args))
 	// Check there are 12 Arguments provided as per the the struct - two are computed
 	if len(args) != 12 {
-		fmt.Println("CreateItemObject(): Incorrect number of arguments. Expecting 12 ")
+fmt.Println("the firstargu:",args[0],",2:",args[1],",3:",args[2],"\n")		
+fmt.Println("CreateItemObject(): Incorrect number of arguments. Expecting 12 ")
 		return myItem, errors.New("CreateItemObject(): Incorrect number of arguments. Expecting 12 ")
 	}
 
