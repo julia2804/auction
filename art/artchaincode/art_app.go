@@ -369,12 +369,13 @@ func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function stri
 
 	if ChkReqType(args) == true {
 
+fmt.Println("the recType shi right!:",args[1],"\n")
 		InvokeRequest := InvokeFunction(function)
 		if InvokeRequest != nil {
 			buff, err = InvokeRequest(stub, function, args)
 		}
 	} else {
-		fmt.Println("Invoke() Invalid recType : ", args, "\n")
+		fmt.Println("Invoke() Invalid recType : ", args[1], "\n")
 		return nil, errors.New("Invoke() : Invalid recType : " + args[0])
 	}
 
