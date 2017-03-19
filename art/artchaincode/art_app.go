@@ -738,7 +738,7 @@ func PostItem(stub shim.ChaincodeStubInterface, function string, args []string) 
 		fmt.Println("PostItem(): Cannot create item object \n")
 		return nil, err
 	}
-
+fmt.Println("PostItem():crate item successfully\n")
 	// Check if the Owner ID specified is registered and valid
 	ownerInfo, err := ValidateMember(stub, itemObject.CurrentOwnerID)
 	fmt.Println("Owner information  ", ownerInfo, itemObject.CurrentOwnerID)
@@ -746,7 +746,7 @@ func PostItem(stub shim.ChaincodeStubInterface, function string, args []string) 
 		fmt.Println("PostItem() : Failed Owner information not found for ", itemObject.CurrentOwnerID)
 		return nil, err
 	}
-
+fmt.Println("PostItem():wner information found",intemObject.CurrentOwnerID)
 	// Convert Item Object to JSON
 	buff, err := ARtoJSON(itemObject) //
 	if err != nil {
@@ -761,7 +761,7 @@ func PostItem(stub shim.ChaincodeStubInterface, function string, args []string) 
 			fmt.Println("PostItem() : write error while inserting record\n")
 			return buff, err
 		}
-
+fmt.Println("PostItem():rite ledger succes\n")
 		// Put an entry into the Item History Table
 		_, err = PostItemLog(stub, itemObject, "INITIAL", "DEFAULT")
 		if err != nil {
